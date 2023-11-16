@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}-test
+spec:
+  backoffLimit: 30
+  template:
+    spec:
+      serviceAccount: {{ default "default" .Values.serviceAccount }}
+      restartPolicy: OnFailure
+      containers:
+        - name: main
+          image: alpine/k8s:1.28.0
+          command: [ "sh", "/scripts/test.sh", {{ .Values.nodes | quote }} ]
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+          env:
+            - name: INSTANCE
+              value: {{ .Release.Name }}
+      volumes:
+        - name: scripts
+          configMap:
+            name: {{ .Release.Name }}-scripts

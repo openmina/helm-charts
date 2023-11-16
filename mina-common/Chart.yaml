@@ -1,0 +1,6 @@
+apiVersion: v2
+name: mina-test-common
+description: Common templates for Mina test nodes
+type: library
+version: 0.0.1
+appVersion: "0.0.0"

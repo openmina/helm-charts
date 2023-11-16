@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ocaml-test-node.fullname" . }}
+  labels:
+    {{- include "ocaml-test-node.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "ocaml-test-node.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "ocaml-test-node.podLabels" . | nindent 8 }}
+        {{- include "ocaml-test-node.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "ocaml-test-node.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        {{- include "ocaml-test-node.initContainers" . | indent 8 }}
+      containers:
+        - name: mina
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: {{ include "ocaml-test-node.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: [ mina, daemon ]
+          args: {{ include "ocaml-test-node.args" . | nindent 12 }}
+          env:
+            {{ include "ocaml-test-node.env" . | nindent 12 }}
+          ports:
+            {{ include "ocaml-test-node.ports" . | indent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            {{- include "ocaml-test-node.volumeMounts" . | indent 12 }}
+      volumes:
+        {{- include "ocaml-test-node.volumes" . | indent 8 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+

@@ -1,0 +1,25 @@
+nodes: seed rust
+
+seed:
+  daemonJson:
+    local:
+      path: /var/lib/coda/berkeley.json
+  libp2p:
+    secret: seed-libp2p
+  isSeed: true
+
+ocaml:
+  peers:
+    - name: seed
+      peerId: 12D3KooWBT8pyJAfWJhdeGYAtKvcaUmm78ExyZ6uo6BEimYNVat1
+  daemonJson:
+    local:
+      path: /var/lib/coda/berkeley.json
+  seedWaitTimeout: 20
+
+rust:
+  peers:
+    - name: seed
+      peerId: 12D3KooWBT8pyJAfWJhdeGYAtKvcaUmm78ExyZ6uo6BEimYNVat1
+  probes:
+    readiness: false
