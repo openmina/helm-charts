@@ -1,12 +1,12 @@
 dependencies:
 - name: ocaml-test-node
   repository: file://../ocaml-test-node
-  version: 0.0.1
+  version: 0.0.2
 - name: ocaml-test-node
   repository: file://../ocaml-test-node
-  version: 0.0.1
+  version: 0.0.2
 - name: rust-test-node
   repository: file://../rust-test-node
   version: 0.0.1
-digest: sha256:53de8064ee1edab206f3a112bc82d64d6316dfec5a33305822c9be4e7da8db81
-generated: "2023-11-15T21:05:02.976309468+03:00"
+digest: sha256:5ad99b514c4ba2afa14e99d3643705f5f3d939abd6253ad4f5a3cb793a2d50c3
+generated: "2023-11-16T12:49:09.832980503+03:00"

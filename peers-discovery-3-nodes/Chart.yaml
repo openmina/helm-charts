@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.0.1
+version: 0.0.2
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -28,11 +28,11 @@ dependencies:
   - name: ocaml-test-node
     repository: file://../ocaml-test-node
     alias: seed
-    version: ">=0.0.0"
+    version: ">=0.0.2"
   - name: ocaml-test-node
     alias: ocaml
     repository: file://../ocaml-test-node
-    version: ">=0.0.0"
+    version: ">=0.0.2"
   - name: rust-test-node
     alias: rust
     repository: file://../rust-test-node

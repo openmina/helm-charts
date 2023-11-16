@@ -2,7 +2,7 @@
 Expand the name of the chart.
 */}}
 {{- define "ocaml-test-node.name" -}}
-{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- include "mina-common.name" . }}
 {{- end }}
 
 {{/*
@@ -11,12 +11,7 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 If release name contains chart name it will be used as a full name.
 */}}
 {{- define "ocaml-test-node.fullname" -}}
-{{- if .Values.fullnameOverride }}
-{{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- $name := default .Chart.Name .Values.nameOverride }}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
-{{- end }}
+{{- include "mina-common.fullname" . }}
 {{- end }}
 
 {{/*
