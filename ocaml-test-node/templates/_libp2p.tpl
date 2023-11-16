@@ -23,7 +23,7 @@ key
 Libp2p secret name
 */}}
 {{- define "ocaml-test-node.libp2p.secret.name" -}}
-{{- default (printf "%s-libp2p" (include "ocaml-test-node.fullname" .)) .Values.libp2p.secret }}
+{{- printf "%s-%s" .Release.Name .Values.libp2p.secret }}
 {{- end }}
 
 

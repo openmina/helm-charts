@@ -1,4 +1,4 @@
-nodes: seed rust
+nodes: seed ocaml rust
 
 seed:
   daemonJson:
