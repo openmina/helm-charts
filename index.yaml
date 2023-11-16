@@ -53,6 +53,29 @@ entries:
   openmina-discovery:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-11-16T10:29:33.592401808Z"
+    dependencies:
+    - alias: seed
+      name: ocaml-test-node
+      repository: file://../ocaml-test-node
+      version: '>=0.0.2'
+    - alias: ocaml
+      name: ocaml-test-node
+      repository: file://../ocaml-test-node
+      version: '>=0.0.2'
+    - alias: rust
+      name: rust-test-node
+      repository: file://../rust-test-node
+      version: '>=0.0.0'
+    description: Peers discovery test for Openmina
+    digest: e8986df0ed87613578f7d08501fb29fb50ebef6ea65d95dc3945b9e0710751fb
+    name: openmina-discovery
+    type: application
+    urls:
+    - https://github.com/openmina/helm-charts/releases/download/openmina-discovery-0.0.3/openmina-discovery-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-11-16T09:57:44.035400621Z"
     dependencies:
     - alias: seed
@@ -112,4 +135,4 @@ entries:
     urls:
     - https://github.com/openmina/helm-charts/releases/download/rust-test-node-0.0.1/rust-test-node-0.0.1.tgz
     version: 0.0.1
-generated: "2023-11-16T09:57:44.035439053Z"
+generated: "2023-11-16T10:29:33.592422797Z"
