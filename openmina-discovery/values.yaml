@@ -1,4 +1,6 @@
 nodes: seed ocaml rust
+global:
+  readinessProbe: P2PSocket
 
 seed:
   daemonJson:
@@ -15,11 +17,9 @@ ocaml:
   daemonJson:
     local:
       path: /var/lib/coda/berkeley.json
-  seedWaitTimeout: 20
+  seedWaitTimeout: 5
 
 rust:
   peers:
     - name: seed
       peerId: 12D3KooWBT8pyJAfWJhdeGYAtKvcaUmm78ExyZ6uo6BEimYNVat1
-  probes:
-    readiness: false

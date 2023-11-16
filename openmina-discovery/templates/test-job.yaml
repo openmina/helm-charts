@@ -8,6 +8,16 @@ spec:
     spec:
       serviceAccount: {{ default "default" .Values.serviceAccount }}
       restartPolicy: OnFailure
+      initContainers:
+        - name: wait
+          image: alpine/k8s:1.28.0
+          command: [ "sh", "/scripts/wait.sh", {{ .Values.nodes | quote }} ]
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+          env:
+            - name: INSTANCE
+              value: {{ .Release.Name }}
       containers:
         - name: main
           image: alpine/k8s:1.28.0
