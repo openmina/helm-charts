@@ -17,13 +17,20 @@ livenessProbe:
 Readiness probe: openmina node considered ready when it is in sync with the network.
 */}}
 {{- define "rust-test-node.readinessProbe" }}
-{{- if .Values.probes.readiness }}
+{{- with include "mina-common.readinessProbe" . }}
 readinessProbe:
+  {{- if eq . "Default" }}
   initialDelaySeconds: 60
   periodSeconds: 20
   failureThreshold: 60
   httpGet:
     path: /readyz
     port: 3000
+  {{- else if eq . "P2PSocket"}}
+  tcpSocket:
+    port: "external"
+  {{- else }}
+  {{- fail (printf "unknown readiness probe kind: '%s'" .) }}
+  {{- end }}
 {{- end }}
 {{- end }}

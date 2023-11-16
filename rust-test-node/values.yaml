@@ -4,7 +4,6 @@
 
 probes:
   liveness: true
-  readiness: true
 replicaCount: 1
 
 image:

@@ -1,0 +1,6 @@
+{{/*
+Get readiness probe value
+*/}}
+{{- define "mina-common.readinessProbe" }}
+{{- default (dig "global" "readinessProbe" "" .Values.AsMap) (dig "readinessProbe" "" .Values.AsMap) }}
+{{- end }}

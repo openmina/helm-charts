@@ -43,6 +43,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             {{- include "ocaml-test-node.volumeMounts" . | indent 12 }}
+          {{ include "ocaml-test-node.readinessProbe" . | indent 10 }}
       volumes:
         {{- include "ocaml-test-node.volumes" . | indent 8 }}
       {{- with .Values.nodeSelector }}

@@ -49,6 +49,9 @@ spec:
             {{ include "rust-test-node.volumeMounts" . | indent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          ports:
+            - name: external
+              containerPort: 8302
       volumes:
         {{ include "rust-test-node.volumes" . | indent 10 }}
       {{- with .Values.nodeSelector }}
