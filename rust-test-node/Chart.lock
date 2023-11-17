@@ -1,6 +1,6 @@
 dependencies:
 - name: mina-test-common
   repository: file://../mina-common
-  version: 0.0.3
-digest: sha256:097f88c43d1b8c3cbd192a064a8c6f44bcc87a694db6c6e601dc67e4d632c1b7
-generated: "2023-11-16T17:08:22.776003843+03:00"
+  version: 0.0.4
+digest: sha256:7cfb7a368fbe91be4c70b9055665eb3e7ccef2bb306cc33ed815d90c8a91101d
+generated: "2023-11-17T12:42:08.055626581+03:00"

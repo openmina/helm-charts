@@ -18,19 +18,14 @@ If release name contains chart name it will be used as a full name.
 Create chart name and version as used by the chart label.
 */}}
 {{- define "ocaml-test-node.chart" -}}
-{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- include "mina-common.fullname" . }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
 {{- define "ocaml-test-node.labels" -}}
-helm.sh/chart: {{ include "ocaml-test-node.chart" . }}
-{{ include "ocaml-test-node.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{ include "mina-common.labels" . }}
 openmina.com/node-kind: ocaml
 {{- end }}
 
@@ -45,8 +40,7 @@ openmina.com/node-kind: ocaml
 Selector labels
 */}}
 {{- define "ocaml-test-node.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "ocaml-test-node.name" . }}
-app.kubernetes.io/instance: {{ .Release.Name }}
+{{ include "mina-common.labels" . }}
 {{- end }}
 
 {{/*

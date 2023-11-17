@@ -1,10 +1,15 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ .Release.Name }}-test
+  name: {{ include "mina-common.fullname" . }}
+  labels:
+    {{- include "mina-common.labels" . | nindent 4 }}
 spec:
   backoffLimit: 30
   template:
+    metadata:
+      labels:
+        {{- include "mina-common.labels" . | nindent 8 }}
     spec:
       serviceAccount: {{ default "default" .Values.serviceAccount }}
       restartPolicy: OnFailure

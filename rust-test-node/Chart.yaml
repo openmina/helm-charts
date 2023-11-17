@@ -2,9 +2,9 @@ apiVersion: v2
 name: rust-test-node
 description: A Rust Mina test node
 type: application
-version: 0.0.2
+version: 0.0.3
 appVersion: "0.0.1"
 dependencies:
   - name: mina-test-common
     repository: file://../mina-common
-    version: ">=0.0.3"
+    version: ">=0.0.4"
