@@ -3,6 +3,16 @@ entries:
   mina-test-common:
   - apiVersion: v2
     appVersion: 0.0.0
+    created: "2023-11-17T12:39:12.472769247Z"
+    description: Common templates for Mina test nodes
+    digest: e595716fe93782eb965db5493be7346ffa12ba28d5b8aee74bccbf6e66218650
+    name: mina-test-common
+    type: library
+    urls:
+    - https://github.com/openmina/helm-charts/releases/download/mina-test-common-0.0.4/mina-test-common-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.0.0
     created: "2023-11-16T14:08:58.415883607Z"
     description: Common templates for Mina test nodes
     digest: d11b48064e3623db65097a80fa66d921371c1f8a5526a99a21b382f74cf56ea8
@@ -32,6 +42,20 @@ entries:
     - https://github.com/openmina/helm-charts/releases/download/mina-test-common-0.0.1/mina-test-common-0.0.1.tgz
     version: 0.0.1
   ocaml-test-node:
+  - apiVersion: v2
+    appVersion: 2.0.0rampup4
+    created: "2023-11-17T12:39:12.668215167Z"
+    dependencies:
+    - name: mina-test-common
+      repository: file://../mina-common
+      version: '>=0.0.4'
+    description: A Helm chart for OCaml Mina test node.
+    digest: 7d2ecdefd3f8f651a03419d80f21dc58d217d9d7bccaafa65c1843244887b6f8
+    name: ocaml-test-node
+    type: application
+    urls:
+    - https://github.com/openmina/helm-charts/releases/download/ocaml-test-node-0.0.4/ocaml-test-node-0.0.4.tgz
+    version: 0.0.4
   - apiVersion: v2
     appVersion: 2.0.0rampup4
     created: "2023-11-16T14:08:58.64710232Z"
@@ -75,6 +99,29 @@ entries:
     - https://github.com/openmina/helm-charts/releases/download/ocaml-test-node-0.0.1/ocaml-test-node-0.0.1.tgz
     version: 0.0.1
   openmina-discovery:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-11-17T12:39:12.880926086Z"
+    dependencies:
+    - alias: seed
+      name: ocaml-test-node
+      repository: file://../ocaml-test-node
+      version: '>=0.0.4'
+    - alias: ocaml
+      name: ocaml-test-node
+      repository: file://../ocaml-test-node
+      version: '>=0.0.4'
+    - alias: rust
+      name: rust-test-node
+      repository: file://../rust-test-node
+      version: '>=0.0.3'
+    description: Peers discovery test for Openmina
+    digest: 482888ce9a8e85f4b7cd21d5b6f79bc401e3173872c38bf601f49e50dfbe915f
+    name: openmina-discovery
+    type: application
+    urls:
+    - https://github.com/openmina/helm-charts/releases/download/openmina-discovery-0.0.5/openmina-discovery-0.0.5.tgz
+    version: 0.0.5
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2023-11-16T14:08:58.852167334Z"
@@ -170,6 +217,20 @@ entries:
   rust-test-node:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2023-11-17T12:39:13.0866286Z"
+    dependencies:
+    - name: mina-test-common
+      repository: file://../mina-common
+      version: '>=0.0.4'
+    description: A Rust Mina test node
+    digest: 901b0e4ab210a2e914acfbf9ff936e11e2b7719d0b84fd13c5d4fa80802dd67f
+    name: rust-test-node
+    type: application
+    urls:
+    - https://github.com/openmina/helm-charts/releases/download/rust-test-node-0.0.3/rust-test-node-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2023-11-16T14:08:59.071195751Z"
     dependencies:
     - name: mina-test-common
@@ -196,4 +257,4 @@ entries:
     urls:
     - https://github.com/openmina/helm-charts/releases/download/rust-test-node-0.0.1/rust-test-node-0.0.1.tgz
     version: 0.0.1
-generated: "2023-11-16T14:08:59.071234322Z"
+generated: "2023-11-17T12:39:13.086714762Z"
